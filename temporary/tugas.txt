@@ -1,0 +1,91 @@
+git
+https://prnt.sc/YcnCWKnNyRmp
+akun github
+https://prnt.sc/dLo_k5UmiYpx
+sourcetree
+https://prnt.sc/yqbdRQglbMjz
+text editor
+https://prnt.sc/DqN01lvdvkAn
+
+grepper
+https://prnt.sc/tnI027Ahs1v6
+lightshoot
+https://prnt.sc/bMGjB66N5DQY
+zoom
+https://prnt.sc/eyIczC3oQP4c
+screen omatic
+https://prnt.sc/sA8LKzKQe18I
+
+my desktop:
+https://prnt.sc/Bqc1qsft_OR8
+
+buat repo local
+buat beberapa commit
+screenshoot hasil log dan paste di sini
+
+repo local
+https://prnt.sc/qVLhbU2ur5eH
+https://prnt.sc/UOB2XF85433e
+
+buat beberapa commit
+https://prnt.sc/P7Lt9grOAIaL
+https://prnt.sc/MWVj-pzp90qW
+
+screenshot hasil log dan paste di sini
+https://prnt.sc/qVLhbU2ur5eH
+https://prnt.sc/UOB2XF85433e
+https://prnt.sc/P7Lt9grOAIaL
+https://prnt.sc/MWVj-pzp90qW
+git clone
+https://prnt.sc/wyM01K09frFR
+git push
+https://prnt.sc/VMIM50Dj7A8K
+https://prnt.sc/9xoLNMM3nSrm
+https://prnt.sc/hYkDTG9JCe9R
+
+buat branch baru
+checkout ke branch baru tersebut
+buat beberapa perubahan file baru
+commit perubahan dan merge
+screenshoot log dan kirim di sini
+
+buat branch baru
+https://prnt.sc/dR-wy0twaJpk
+checkout ke branch baru tersebut
+https://prnt.sc/b3UJhJQyea-G
+buat beberapa perubahan file baru
+https://prnt.sc/TtrsIhPY3zis
+https://prnt.sc/_5x-IZzvzpMJ
+commit perubahan dan merge
+https://prnt.sc/XwU2LaAG_QyX
+https://prnt.sc/YKGps366llE8
+https://prnt.sc/BE7Ex9Hmp_8D
+screenshoot log dan kirim di sini
+git log
+https://prnt.sc/dR-wy0twaJpk
+https://prnt.sc/b3UJhJQyea-G
+https://prnt.sc/TtrsIhPY3zis
+https://prnt.sc/_5x-IZzvzpMJ
+https://prnt.sc/XwU2LaAG_QyX
+https://prnt.sc/YKGps366llE8
+https://prnt.sc/BE7Ex9Hmp_8D
+https://prnt.sc/H2wucLQy-y7g
+https://prnt.sc/PNFepxagRC1Y
+
+buat repo baru
+https://prnt.sc/R4YRus1rgHol
+https://prnt.sc/n4-1x9daZws-
+rangkum semua materi git dalam bentuk commit
+https://prnt.sc/6KXNiSTQcp8Y
+https://prnt.sc/fLgksGWhZsXe
+https://prnt.sc/npEA88sDhsFD
+https://prnt.sc/Rlt6KHZt3OOO
+https://prnt.sc/UHmxQ_N6aYWP
+
+callback
+https://prnt.sc/XRfjF1nuj71K
+https://github.com/mkhotamirais/eduworkgit/tree/main/callback
+
+
+
+
