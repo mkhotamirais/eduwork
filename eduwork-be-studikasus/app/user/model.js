@@ -1,4 +1,7 @@
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
+const bcrypt = require("bcrypt");
+// const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 let userSchema = Schema(
   {
@@ -33,8 +36,8 @@ let userSchema = Schema(
 
 userSchema.path("email").validate(
   function (value) {
-    const EMAIL_RE = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return EMAIL_RE.text(value);
+    const EMAIL_RE = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return EMAIL_RE.test(value);
   },
   (attr) => `${attr.value} harus merupakan email yang valid`
 );
@@ -54,5 +57,13 @@ userSchema.path("email").validate(
   },
   (attr) => `${attr.value} sudah terdaftar`
 );
+
+const HASH_ROUND = bcrypt.genSaltSync(10);
+userSchema.pre("save", function (next) {
+  this.password = bcrypt.hashSync(this.password, HASH_ROUND);
+  next();
+});
+
+// userSchema.plugin(AutoIncrement, { inc_field: "customer_id" });
 
 module.exports = model("User", userSchema);
