@@ -1,0 +1,69 @@
+GET http://localhost:3000/api/products
+###
+GET http://localhost:3000/api/products?limit=1&skip=1
+###
+GET http://localhost:3000/api/categories
+###
+POST http://localhost:3000/api/categories
+Content-Type: application/json
+
+{
+    "name": "none"
+}
+###
+PUT http://localhost:3000/api/categories/65074bee7f04f6f8918b328f
+Content-Type: application/json
+
+{
+    "name": "jajanan"
+}
+###
+DELETE http://localhost:3000/api/categories/65074c457f04f6f8918b3293
+###
+GET http://localhost:3000/api/tags
+###
+POST http://localhost:3000/api/tags
+Content-Type: application/json
+
+{
+    "name": "tag2"
+}
+###
+PUT http://localhost:3000/api/tags/65074e98682347be6f50ac75
+Content-Type: application/json
+
+{
+    "name": "tagn"
+}
+###
+DELETE http://localhost:3000/api/tags/65074e98682347be6f50ac75
+###
+GET http://localhost:3000/api/products?category=food&tags[]=tag1
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "full_name": "ahmad",
+    "email": "ahamd@gmail.com",
+    "password": "ahmad",
+    "role": "user"
+}
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "siti",
+    "password": "siti"
+}
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/x-www-form-urlencoded
+
+{
+    "full_name": "ahmad",
+    "email": "ahmad@gmail.com",
+    "password": "ahmad",
+    "role": "admin"
+}

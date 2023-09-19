@@ -28,7 +28,7 @@ const localStrategy = async (email, password, done) => {
     let user = await User.findOne({ email }).select(
       `-__v -createdAt -updatedAt -cart_items -token`
     );
-    if (!user) return done();
+    if (!user) return done(err, null);
     if (bcrypt.compareSync(password, user.password)) {
       ({ password, ...userWithoutPassword } = user.toJSON());
       return done(null, userWithoutPassword);
@@ -44,8 +44,8 @@ const login = (req, res, next) => {
     if (err) return next(err);
     if (!user)
       return res.json({ error: 1, message: "Email or password incorrect" });
-    let signed = jwt.sign(user, config.secretKey);
-    await User.findByIdAndUpdate(user.__id, { $push: { token: signed } });
+    let signed = jwt.sign(user, config.secretkey);
+    await User.findByIdAndUpdate(user._id, { $push: { token: signed } });
     res.json({
       message: "Login Success",
       user,
@@ -54,9 +54,9 @@ const login = (req, res, next) => {
   })(req, res, next);
 };
 
-const logout = (req, res, next) => {
+const logout = async (req, res, next) => {
   let token = getToken(req);
-  let user = User.findOne(
+  let user = await User.findOneAndUpdate(
     { token: { $in: [token] } },
     { $pull: { token: token } },
     { useFindAndModify: false }
