@@ -2,15 +2,15 @@ const User = require("../user/model.js");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const config = require("../config.js");
-const { getToken } = require("../../utils/index.js");
+const config = require("../config/config.js");
+const { getToken } = require("../utils.js");
 
 const register = async (req, res, next) => {
   try {
-    const payload = req.body;
+    let payload = req.body;
     let user = new User(payload);
     await user.save();
-    return res.json(user);
+    return res.json({ msg: "Regsiter success", data: user });
   } catch (err) {
     if (err && err.name === "ValidationError") {
       return res.json({
@@ -33,7 +33,7 @@ const localStrategy = async (email, password, done) => {
       ({ password, ...userWithoutPassword } = user.toJSON());
       return done(null, userWithoutPassword);
     }
-  } catch (error) {
+  } catch (err) {
     done(err, null);
   }
   done();
@@ -47,8 +47,8 @@ const login = (req, res, next) => {
     let signed = jwt.sign(user, config.secretkey);
     await User.findByIdAndUpdate(user._id, { $push: { token: signed } });
     res.json({
-      message: "Login Success",
-      user,
+      msg: "Login Success",
+      data: user,
       token: signed,
     });
   })(req, res, next);
