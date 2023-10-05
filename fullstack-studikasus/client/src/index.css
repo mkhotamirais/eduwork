@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+header .navlist .navlink {
+  @apply h-16 flex justify-center items-center px-3;
+}
+
+main {
+  @apply min-h-screen px-3 md:px-16;
+}
+
+.accountOpt {
+  @apply block border-b p-2 pl-4 hover:bg-blue-500 hover:text-white;
+}

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply relative min-h-screen;
+}
+
+header .mynav {
+  @apply flex justify-between items-center gap-8;
+}

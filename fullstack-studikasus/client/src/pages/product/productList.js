@@ -1,0 +1,42 @@
+export const productList = [
+  {
+    _id: 1,
+    name: "telur",
+    price: 4000,
+    category: "food",
+    tags: "tag1",
+    image: "/product/1.jpg",
+  },
+  {
+    _id: 2,
+    name: "ayam",
+    price: 5000,
+    category: "food",
+    tags: "tag1",
+    image: "/product/2.jpg",
+  },
+  {
+    _id: 3,
+    name: "kopi",
+    price: 6000,
+    category: "drink",
+    tags: "tag1",
+    image: "/product/3.jpg",
+  },
+  {
+    _id: 4,
+    name: "teh",
+    price: 7000,
+    category: "drink",
+    tags: "tag2",
+    image: "/product/4.jpg",
+  },
+  {
+    _id: 5,
+    name: "beras",
+    price: 9000,
+    category: "food",
+    tags: "tag2",
+    image: "/product/5.jpg",
+  },
+];

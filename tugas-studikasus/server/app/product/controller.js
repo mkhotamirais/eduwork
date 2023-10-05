@@ -1,7 +1,8 @@
 const path = require("path");
 const fs = require("fs");
-const config = require("../config/config.js");
+const config = require("../../config/config.js");
 const Product = require("./model.js");
+const { handleErr } = require("../utils.js");
 const Category = require("../category/model.js");
 const Tag = require("../tag/model.js");
 
@@ -12,51 +13,35 @@ const store = async (req, res, next) => {
       let category = await Category.findOne({
         name: { $regex: payload.category, $options: "i" },
       });
-      if (category) {
-        payload = { ...payload, category: category._id };
-      } else {
-        delete payload.category;
-      }
+      category
+        ? (payload = { ...payload, category: category._id })
+        : delete payload.category;
     }
     if (payload.tags && payload.tags.length > 0) {
-      let tags = await Tag.find({
-        name: { $in: payload.tags },
-      });
-      if (tags.length) {
-        payload = { ...payload, tags: tags.map((tag) => tag._id) };
-      } else {
-        delete payload.tags;
-      }
+      let tags = await Tag.find({ name: { $in: payload.tags } });
+      tags.length
+        ? (payload = { ...payload, tags: tags.map((tag) => tag._id) })
+        : delete payload.tags;
     }
-
     if (req.file) {
       let originalExt = path.extname(req.file.originalname);
       let fileName = req.file.filename + originalExt;
-      let target_path = path.resolve(
+      let targetPath = path.resolve(
         config.rootPath,
         `public/images/products/${fileName}`
       );
+      payload = { ...payload, image_url: fileName };
       const src = fs.createReadStream(req.file.path);
-      const dest = fs.createWriteStream(target_path);
+      const dest = fs.createWriteStream(targetPath);
       src.pipe(dest);
       src.on("end", async () => {
         try {
-          payload = { ...payload, image_url: fileName };
           let product = new Product(payload);
           await product.save();
-          return res.json({
-            msg: "Add product success",
-            data: product,
-          });
+          return res.json(product);
         } catch (err) {
-          fs.unlinkSync(target_path);
-          if (err && err.name === "ValidationError") {
-            return res.json({
-              error: 1,
-              message: err.message,
-              fields: err.errors,
-            });
-          }
+          fs.unlinkSync(targetPath);
+          handleErr(err, res);
           next(err);
         }
       });
@@ -66,19 +51,10 @@ const store = async (req, res, next) => {
     } else {
       let product = new Product(payload);
       await product.save();
-      return res.json({
-        msg: "Add product success",
-        data: product,
-      });
+      return res.json(product);
     }
   } catch (err) {
-    if (err && err.name == "ValidationError") {
-      return res.json({
-        error: 1,
-        message: err.message,
-        fields: err.errors,
-      });
-    }
+    handleErr(err, res);
     next(err);
   }
 };
@@ -103,16 +79,12 @@ const index = async (req, res, next) => {
       criteria = { ...criteria, tags: { $in: tags.map((tag) => tag._id) } };
     }
     let count = await Product.find(criteria).countDocuments();
-    let product = await Product.find(criteria)
+    let products = await Product.find(criteria)
       .skip(parseInt(skip))
       .limit(parseInt(limit))
       .populate("category")
       .populate("tags");
-    return res.json({
-      msg: "Get all products",
-      data: product,
-      count,
-    });
+    return res.json({ count, products });
   } catch (err) {
     next(err);
   }
@@ -126,32 +98,26 @@ const update = async (req, res, next) => {
       let category = await Category.findOne({
         name: { $regex: payload.category, $options: "i" },
       });
-      if (category) {
-        payload = { ...payload, category: category._id };
-      } else {
-        delete payload.category;
-      }
+      category
+        ? (payload = { ...payload, category: category._id })
+        : delete payload.category;
     }
     if (payload.tags && payload.tags.length > 0) {
-      let tags = await Tag.find({
-        name: { $in: payload.tags },
-      });
-      if (tags.length) {
-        payload = { ...payload, tags: tags.map((tag) => tag._id) };
-      } else {
-        delete payload.tags;
-      }
+      let tags = await Tag.find({ name: { $in: payload.tags } });
+      tags.length
+        ? (payload = { ...payload, tags: tags.map((tag) => tag._id) })
+        : delete payload.tags;
     }
     if (req.file) {
-      let originalExt = path.extname(req.file.originalname); // .jpg
+      let originalExt = path.extname(req.file.originalname);
       let fileName = req.file.filename + originalExt;
-      let target_path = path.resolve(
+      let targetPath = path.resolve(
         config.rootPath,
         `public/images/products/${fileName}`
       );
       payload = { ...payload, image_url: fileName };
       const src = fs.createReadStream(req.file.path);
-      const dest = fs.createWriteStream(target_path);
+      const dest = fs.createWriteStream(targetPath);
       src.pipe(dest);
       src.on("end", async () => {
         try {
@@ -164,19 +130,10 @@ const update = async (req, res, next) => {
             new: true,
             runValidators: true,
           });
-          return res.json({
-            msg: "Update product success",
-            data: product,
-          });
+          return res.json(product);
         } catch (err) {
-          fs.unlinkSync(target_path);
-          if (err && err.name == "ValidationError") {
-            return res.json({
-              error: 1,
-              message: err.message,
-              fields: err.errors,
-            });
-          }
+          fs.unlinkSync(targetPath);
+          handleErr(err, res);
           next(err);
         }
       });
@@ -186,36 +143,28 @@ const update = async (req, res, next) => {
     } else {
       let product = await Product.findByIdAndUpdate(id, payload, {
         new: true,
-        runValidators: true,
       });
-      return res.json({
-        msg: "Update product success",
-        data: product,
-      });
+      return res.json(product);
     }
   } catch (err) {
-    if (err && err.name == "ValidationError") {
-      return res.json({
-        error: 1,
-        message: err.message,
-        fields: err.errors,
-      });
-    }
+    handleErr(err, res);
     next(err);
   }
 };
 
 const destroy = async (req, res, next) => {
   try {
-    let product = await Product.findByIdAndDelete(req.params.id);
+    let { id } = req.params;
+    let product = await Product.findByIdAndDelete(id);
     let currentImage = `${config.rootPath}/public/images/products/${product.image_url}`;
     if (fs.existsSync(currentImage)) {
       fs.unlinkSync(currentImage);
     }
-    return res.json({ msg: "Delete product success", data: product });
+    return res.json(product);
   } catch (err) {
+    handleErr(err, res);
     next(err);
   }
 };
 
-module.exports = { index, store, update, destroy };
+module.exports = { store, index, update, destroy };
