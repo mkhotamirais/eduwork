@@ -25,3 +25,15 @@ header .nav-link {
 .profil-table tr td {
   @apply py-3;
 }
+
+.pagination button {
+  @apply border p-2 px-4 hover:bg-blue-300 hover:text-white;
+}
+
+.pagination button.disabled {
+  @apply hover:bg-transparent hover:text-gray-400 text-gray-400 cursor-auto;
+}
+
+.pagination button.active {
+  @apply bg-blue-500 text-white;
+}

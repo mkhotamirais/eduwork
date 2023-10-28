@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+header {
+  @apply z-50 border-b-2 h-16 flex items-center justify-between px-3 md:px-16 sticky top-0 backdrop-blur-[5px] bg-[hsla(0,0%,100%,.8)];
+}
+
+header nav {
+  @apply z-50 overflow-hidden transition-all duration-300 sm:h-full flex flex-col sm:flex-row absolute top-16 left-0 right-0 sm:static bg-white sm:bg-transparent;
+}
+
+header nav a {
+  @apply capitalize py-3 h-12 sm:h-16 flex items-center justify-center px-3 font-semibold hover:text-slate-500 border-b sm:border-none;
+}
+
+header #bars {
+  @apply relative flex items-center justify-center sm:hidden text-2xl border rounded w-8 h-8;
+}
+
+header #bars #barsLayer {
+  @apply cursor-pointer absolute top-0 left-0 right-0 bottom-0 bg-transparent z-50;
+}
+
+main {
+  @apply min-h-screen px-3 md:px-16;
+}
+
+footer {
+  @apply h-16 border-t-2 text-center items-center;
+}

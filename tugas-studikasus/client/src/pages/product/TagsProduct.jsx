@@ -1,54 +1,63 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getProductTags, productSelectors } from "../../features/productSlice";
+import { getProductTags, getProductsLimit8, productSelectors } from "../../features/productSlice";
 import { useEffect, useState } from "react";
 import { getTags, tagSelectors } from "../../features/tagsSlice";
+import { tagsFilter, tagsPush } from "../../features/tagsSelectedSlice";
 
 const TagsProduct = () => {
-  const products = useSelector(productSelectors.selectAll);
-  const allTags = useSelector(tagSelectors.selectAll);
-  const [tags, setTags] = useState([]);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTags());
-  }, [dispatch]);
-  const toggleTags = (e) => {
-    let tagAdd = e.target.textContent;
-    setTags([...tags, tagAdd]);
-  };
-  const allBgTags = [];
-  const bgTags = (pt) => {
-    allBgTags.push(pt.name);
-    const concatTags = allBgTags.concat(tags);
-    concatTags.filter((item, i) => {
-      if (concatTags.indexOf(item) !== i) {
-        return "bg-blue-500 text-black";
-      } else {
-        return "bg-slate-500 text-black";
-      }
-    });
-  };
-  useEffect(() => {
-    if (tags.length) {
-      dispatch(getProductTags(tags));
-    }
-  }, [dispatch, tags]);
-
+  let allTags = useSelector(tagSelectors.selectAll);
+  // const dispatch = useDispatch();
+  // const catSelected = useSelector((state) => state.catSelected);
+  // useEffect(() => {
+  //   dispatch(getTags(catSelected));
+  // }, [dispatch, catSelected]);
   return (
     <div className="my-5">
       <span className="font-semibold">Tags: </span>
-      {allTags.map((pt) => (
-        <span
-          key={pt._id}
-          onClick={(e) => toggleTags(e)}
-          className={`${bgTags(
-            pt
-          )} capitalize text-white leading-5 px-2 rounded-full text-sm mr-1 cursor-pointer hover:bg-blue-500`}
-        >
-          {pt.name}
-        </span>
+      {allTags.map(({ _id, name }) => (
+        <TagBadge key={_id} name={name} />
       ))}
     </div>
   );
 };
+
+const TagBadge = ({ name }) => {
+  // const productsTag = useSelector(productSelectors.selectAll);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getProducts());
+  //   console.log(productsTag);
+  // }, [dispatch]);
+  // const [bg, setBg] = useState(false);
+  // const tags = useSelector((state) => state.tagsSelected);
+  // useEffect(() => {
+  //   if (tags.tags.length > 0) {
+  //     dispatch(getProductTags(tags.tags));
+  //   } else {
+  //     dispatch(getProductsLimit8());
+  //   }
+  // }, [dispatch, tags]);
+
+  const handleBg = () => {
+    setBg(!bg);
+    if (!tags.tags.includes(name)) {
+      dispatch(tagsPush(name));
+    } else {
+      dispatch(tagsFilter(name));
+    }
+  };
+
+  return (
+    <span
+      onClick={() => handleBg()}
+      className={`${
+        bg ? "bg-blue-500" : "bg-slate-500"
+      } text-white capitalize leading-5 px-2 rounded-full text-sm mr-1 cursor-pointer hover:bg-blue-500`}
+    >
+      {name}
+    </span>
+  );
+};
+TagBadge.propTypes;
 
 export default TagsProduct;

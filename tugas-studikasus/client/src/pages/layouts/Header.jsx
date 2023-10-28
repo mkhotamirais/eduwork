@@ -11,7 +11,7 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <header className="h-16 border-b flex items-center justify-between px-3 md:px-16 sticky top-0 backdrop-blur-[3px] bg-[hsla(0,0%,100%,.8)]">
+      <header className="z-50 h-16 border-b flex items-center justify-between px-3 md:px-16 sticky top-0 backdrop-blur-[3px] bg-[hsla(0,0%,100%,.8)]">
         <Link to="" className="uppercase font-semibold text-xl">
           mkhotami pos
         </Link>

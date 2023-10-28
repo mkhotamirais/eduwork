@@ -13,23 +13,16 @@ const store = async (req, res, next) => {
       let category = await Category.findOne({
         name: { $regex: payload.category, $options: "i" },
       });
-      category
-        ? (payload = { ...payload, category: category._id })
-        : delete payload.category;
+      category ? (payload = { ...payload, category: category._id }) : delete payload.category;
     }
     if (payload.tags && payload.tags.length > 0) {
       let tags = await Tag.find({ name: { $in: payload.tags } });
-      tags.length
-        ? (payload = { ...payload, tags: tags.map((tag) => tag._id) })
-        : delete payload.tags;
+      tags.length ? (payload = { ...payload, tags: tags.map((tag) => tag._id) }) : delete payload.tags;
     }
     if (req.file) {
       let originalExt = path.extname(req.file.originalname);
       let fileName = req.file.filename + originalExt;
-      let targetPath = path.resolve(
-        config.rootPath,
-        `public/images/products/${fileName}`
-      );
+      let targetPath = path.resolve(config.rootPath, `public/images/products/${fileName}`);
       payload = { ...payload, image_url: fileName };
       const src = fs.createReadStream(req.file.path);
       const dest = fs.createWriteStream(targetPath);
@@ -61,7 +54,7 @@ const store = async (req, res, next) => {
 
 const index = async (req, res, next) => {
   try {
-    let { skip = 0, limit = 8, q = "", category = "", tags = [] } = req.query;
+    let { skip = 0, limit, q = "", category = "", tags = [] } = req.query;
     let criteria = {};
     if (q.length) {
       criteria = { ...criteria, name: { $regex: `${q}`, $options: "i" } };
@@ -98,23 +91,16 @@ const update = async (req, res, next) => {
       let category = await Category.findOne({
         name: { $regex: payload.category, $options: "i" },
       });
-      category
-        ? (payload = { ...payload, category: category._id })
-        : delete payload.category;
+      category ? (payload = { ...payload, category: category._id }) : delete payload.category;
     }
     if (payload.tags && payload.tags.length > 0) {
       let tags = await Tag.find({ name: { $in: payload.tags } });
-      tags.length
-        ? (payload = { ...payload, tags: tags.map((tag) => tag._id) })
-        : delete payload.tags;
+      tags.length ? (payload = { ...payload, tags: tags.map((tag) => tag._id) }) : delete payload.tags;
     }
     if (req.file) {
       let originalExt = path.extname(req.file.originalname);
       let fileName = req.file.filename + originalExt;
-      let targetPath = path.resolve(
-        config.rootPath,
-        `public/images/products/${fileName}`
-      );
+      let targetPath = path.resolve(config.rootPath, `public/images/products/${fileName}`);
       payload = { ...payload, image_url: fileName };
       const src = fs.createReadStream(req.file.path);
       const dest = fs.createWriteStream(targetPath);

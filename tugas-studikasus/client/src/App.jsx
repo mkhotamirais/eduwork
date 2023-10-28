@@ -18,6 +18,7 @@ const App = () => {
   return (
     <>
       <Header />
+      {/* <Accordion3 /> */}
       <main className="min-h-screen px-3 md:px-16">
         <Outlet />
       </main>

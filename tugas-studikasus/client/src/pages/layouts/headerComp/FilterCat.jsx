@@ -5,12 +5,20 @@ import {
 } from "../../../features/categorySlice.js";
 import { useEffect, useState } from "react";
 import { getProductCat } from "../../../features/productSlice.js";
+import { getCat } from "../../../features/catSelectedSlice.js";
 
 const FilterCat = () => {
   const [category, setCategory] = useState("");
   const categories = useSelector(categorySelectors.selectAll);
+
   const dispatch = useDispatch();
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+    dispatch(getCat(category));
+    dispatch(getProductCat(category));
+  };
   useEffect(() => {
+    // dispatch(getCat(category));
     dispatch(getProductCat(category));
   }, [dispatch, category]);
   useEffect(() => {
@@ -23,11 +31,9 @@ const FilterCat = () => {
       id="name"
       className="focus:outline-none capitalize cursor-pointer bg-inherit"
       value={category}
-      onChange={(e) => {
-        setCategory(e.target.value);
-      }}
+      onChange={(e) => handleCategory(e)}
     >
-      <option value="">all category</option>
+      <option value={null}>all category</option>
       {categories.map((c) => (
         <option key={c._id} value={c.name}>
           {c.name}
