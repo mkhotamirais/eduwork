@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl font-semibold leading-loose">Sistem Toko Products</h1>
+  <h1 class="text-2xl font-semibold leading-loose mt-4 mb-2">Sistem Toko Products</h1>
   <FlexCenter v-if="!products" class="pb-16">
     <h1 class="text-3xl">Loading...</h1>
   </FlexCenter>
@@ -9,7 +9,7 @@
         <img :src="product.photo" :alt="product.name" />
         <div class="p-3">
           <h1 class="text-xl capitalize font-semibold text-slate-500">{{ product.name }}</h1>
-          <h3 class="text-3xl">Rp{{ product.price }}</h3>
+          <h3 class="text-2xl sm:text-3xl">Rp{{ product.price }}</h3>
         </div>
       </router-link>
     </div>

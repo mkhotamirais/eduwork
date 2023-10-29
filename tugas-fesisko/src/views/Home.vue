@@ -1,5 +1,7 @@
 <template>
-  <header class="border-b-2 h-16 flex justify-between items-center px-3 md:px-16 sticky top-0 bg-white">
+  <header
+    class="z-50 border-b-2 h-16 flex justify-between items-center px-3 md:px-16 sticky top-0 bg-[hsla(0,0%,100%,.8)] backdrop-blur-[5px]"
+  >
     <div>
       <router-link to="/" class="font-semibold text-xl">
         <span v-if="changeLogo">FE-SISKO</span>
@@ -27,7 +29,7 @@
   <main class="px-3 md:px-16 min-h-[calc(100vh-4rem)]">
     <router-view></router-view>
   </main>
-  <footer class="h-16 border-t-2 text-center">
+  <footer class="h-16 border-t-2 text-center mt-10">
     <h1>Footer</h1>
   </footer>
 </template>
