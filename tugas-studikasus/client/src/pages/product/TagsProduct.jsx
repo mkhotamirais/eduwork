@@ -38,22 +38,8 @@ const TagBadge = ({ name }) => {
   //   }
   // }, [dispatch, tags]);
 
-  const handleBg = () => {
-    setBg(!bg);
-    if (!tags.tags.includes(name)) {
-      dispatch(tagsPush(name));
-    } else {
-      dispatch(tagsFilter(name));
-    }
-  };
-
   return (
-    <span
-      onClick={() => handleBg()}
-      className={`${
-        bg ? "bg-blue-500" : "bg-slate-500"
-      } text-white capitalize leading-5 px-2 rounded-full text-sm mr-1 cursor-pointer hover:bg-blue-500`}
-    >
+    <span className={`text-white capitalize leading-5 px-2 rounded-full text-sm mr-1 cursor-pointer hover:bg-blue-500`}>
       {name}
     </span>
   );

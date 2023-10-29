@@ -5,6 +5,7 @@ import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import UserAction from "./headerComp/UserAction";
 import { useDispatch, useSelector } from "react-redux";
 import { munculhilang } from "../../features/useractionSlice";
+import CartCount from "./headerComp/CartCount";
 
 const Header = () => {
   const useraction = useSelector((state) => state.useraction.value);
@@ -23,9 +24,10 @@ const Header = () => {
           <li className="nav-list">
             <FilterQ />
           </li>
-          <div className="nav-list">
+          <div className="nav-list relative">
             <Link to="keranjang">
               <AiOutlineShoppingCart className="text-2xl hover:text-slate-500" />
+              <CartCount />
             </Link>
           </div>
           <div className="nav-list relative">

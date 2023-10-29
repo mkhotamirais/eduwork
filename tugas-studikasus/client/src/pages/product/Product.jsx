@@ -1,15 +1,12 @@
 import CardProduct from "./CardProduct";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getProducts,
-  productSelectors,
-  // getProductsLimit8,
-  // productSelectors,
-} from "../../features/productSlice.js";
+import { getProducts, productSelectors } from "../../features/productSlice.js";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
+// import TagsProduct from "./TagsProduct";
 
 const Product = () => {
+  const [cartCount, setCartCount] = useState(1);
   const products = useSelector(productSelectors.selectAll);
   const nama = useSelector((state) => state.product.nama);
   const dispatch = useDispatch();
@@ -33,6 +30,11 @@ const Product = () => {
       </div>
     );
   }
+
+  const handleCartCount = () => {
+    setCartCount(cartCount + 1);
+  };
+
   return (
     <>
       {/* <TagsProduct /> */}
@@ -58,7 +60,7 @@ const Product = () => {
                     </span>
                   ))}
                 </CardProduct.Tengah>
-                <CardProduct.Bawah price={p.price} />
+                <CardProduct.Bawah price={p.price} handleCartCount={handleCartCount} />
               </CardProduct>
             );
           }
