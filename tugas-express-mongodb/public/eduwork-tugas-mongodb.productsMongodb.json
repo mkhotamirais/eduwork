@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "6544679637bbe7b9a3ca273e"
+  },
+  "name": "kopi",
+  "price": "4000",
+  "stock": "5",
+  "status": "true",
+  "image": "3d19d3ee9032665a9b6d7fd0e866fa1d.jpg"
+},
+{
+  "_id": {
+    "$oid": "654467a637bbe7b9a3ca273f"
+  },
+  "name": "bolu",
+  "price": "4000",
+  "stock": "5",
+  "status": "true",
+  "image": "a928ca5a31666dc9af429c9f9ea0a002.jpg"
+}]

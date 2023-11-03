@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "654468a337bbe7b9a3ca2744"
+  },
+  "name": "sate",
+  "price": 3000,
+  "stock": 10,
+  "status": true,
+  "image": "e4f87f4843316674770b4921123e329d.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "654468b537bbe7b9a3ca2746"
+  },
+  "name": "pizza",
+  "price": 3000,
+  "stock": 10,
+  "status": true,
+  "image": "d3a4b07aea8a6db92476c88d4811425c.jpg",
+  "__v": 0
+}]
