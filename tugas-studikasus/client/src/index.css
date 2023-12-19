@@ -37,3 +37,17 @@ header .nav-link {
 .pagination button.active {
   @apply bg-blue-500 text-white;
 }
+
+#pagination2 button.active {
+  @apply bg-blue-500;
+}
+
+#pagination3 button.btn-num {
+  @apply border px-2 hover:bg-blue-500;
+}
+#pagination3 button.btn-prevnext {
+  @apply border px-2 hover:bg-slate-100;
+}
+#pagination3 button.active {
+  @apply bg-blue-500;
+}

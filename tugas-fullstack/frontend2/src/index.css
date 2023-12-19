@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+header nav a {
+  @apply inline-flex items-center px-1 sm:px-3 hover:text-slate-600;
+}
