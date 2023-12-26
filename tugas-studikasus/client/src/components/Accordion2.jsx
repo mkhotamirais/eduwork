@@ -31,9 +31,7 @@ const Accordion2 = () => {
           >
             {item.title}
           </button>
-          <div className="transition-all duration-300">
-            {select == i && item.content}
-          </div>
+          <div className="transition-all duration-300">{select == i && item.content}</div>
         </div>
       ))}
     </div>
