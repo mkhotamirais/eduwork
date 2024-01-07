@@ -5,6 +5,7 @@ import { getAllProducts, getDetailProduct, getStatus } from "../../features/prod
 import { imgUrl } from "../../constants/contants";
 import { Prev, Spinner } from "../../components/Tags";
 import { FaCartPlus } from "react-icons/fa";
+import { addToCart } from "../../features/cartsSlice";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -58,7 +59,7 @@ const SingleProduct = () => {
                 <tr>
                   <th></th>
                   <td className="text-end">
-                    <button className="border p-3 mt-3 rounded">
+                    <button className="border p-3 mt-3 rounded" onClick={() => dispatch(addToCart({ id: parseInt(id) }))}>
                       <FaCartPlus className="text-xl" />
                     </button>
                   </td>

@@ -10,10 +10,12 @@ const ProductCard = ({ product }) => {
   };
   return (
     <div className="bg-white border rounded p-3">
-      <Link to={`product/${product.id}`}>
-        <figure>
-          <img src={product.photo} alt={product.name} />
+      <Link to={product.photo}>
+        <figure className="overflow-hidden">
+          <img src={product.photo} alt={product.name} className="hover:scale-110 transition-all duration-300" />
         </figure>
+      </Link>
+      <Link to={`product/${product.id}`}>
         <h3 className="capitalize text-xl font-semibold leading-relaxed text-blue-500 hover:underline">{product.name}</h3>
       </Link>
       <div className="text-2xl text-slate-600 font-semibold flex justify-between items-center">
