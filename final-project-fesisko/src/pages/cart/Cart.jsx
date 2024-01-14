@@ -132,11 +132,13 @@ const Cart = () => {
           </tbody>
         </table>
       </div>
-      <Link to="ongkir">
-        <button className="bg-blue-500 p-2 text-white rounded my-2 w-full sm:w-auto sm:float-end hover:opacity-70">
-          Checkout
-        </button>
-      </Link>
+      {carts.length > 0 && (
+        <Link to="ongkir">
+          <button className="bg-blue-500 p-2 text-white rounded my-2 w-full sm:w-auto sm:float-end hover:opacity-70">
+            Checkout
+          </button>
+        </Link>
+      )}
     </section>
   );
 };
