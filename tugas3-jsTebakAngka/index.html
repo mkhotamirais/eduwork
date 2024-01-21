@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tebak angka</title>
+  </head>
+  <body>
+    <h1>tebak angka</h1>
+    <button type="button" onclick="mulai()">mulai main</button>
+    <script>
+      let startMessage = `
+      Selamat datang di game tebak angka
+      kamu diminta menebak angka 1-3
+      dan kamu akan bermain dalam 5 ronde
+      player yang berhasil mengumpulkan tebakan terbanyak akan menang
+      SELAMAT BERMAIN!!!`;
+
+      let tanyaTebak = "player 1: tebak angka antara 1-3";
+      // ronde 1
+      // tebakan tidak boleh sama
+      // tidak ada yang benar, haisl seri
+      // nilai yang dicari 3
+      // perolehan sementara
+      // player1: 0
+      // player2: 0
+
+      // ronde 2
+      // player 1 win
+      // perolehan akhir
+      // player1: 0
+      // player2: 0
+
+      function mulai() {
+        alert("selamat datang, silahkan mendaftar dahulu");
+        let players = [];
+        function addPlayer(name) {
+          console.log(name);
+          if (name === "") {
+            alert("nama tidak boleh kosong");
+            addPlayer(prompt("add player?"));
+          } else if (name === null) {
+            let exit = confirm("Permainan belum dimulai, apakah yakin ingin ke luar?");
+            if (!exit) addPlayer(prompt("add player"));
+          } else {
+            players.push(name);
+            alert(`${name} berhasil ditambahkan`);
+            if (confirm("Tambah peserta lagi")) {
+              addPlayer(prompt("add player?"));
+            } else {
+              alert("selamat bermain ahmad");
+              alert("Ini adalah permainan tebak angka");
+            }
+          }
+        }
+        addPlayer(prompt("add player?"));
+
+        console.log(players);
+      }
+    </script>
+  </body>
+</html>
