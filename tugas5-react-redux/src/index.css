@@ -1,0 +1,5 @@
+header nav .navbar-nav a {
+  text-decoration: none;
+  color: #aaa;
+  padding: 0 1rem;
+}
