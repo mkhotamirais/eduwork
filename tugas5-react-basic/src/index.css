@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply scroll-smooth;
+}
+header {
+  @apply flex border-b-2 fixed top-0 left-0 right-0 h-16 px-4 md:px-16 justify-between items-center backdrop-blur;
+}
+
+header .logo {
+  @apply uppercase text-lg font-semibold;
+}
+
+header .nav {
+  @apply flex;
+}
+
+header .nav li a {
+  @apply flex h-16 items-center px-4 hover:text-slate-500 capitalize;
+}
+
+header .nav {
+  @apply flex;
+}
+
+main {
+  @apply min-h-screen mt-16 pt-4 px-4 md:px-16;
+}
+
+main .sub-title {
+  @apply font-semibold text-2xl;
+}
+
+section {
+  @apply scroll-mt-16 pt-5;
+  min-height: calc(100vh - 4rem);
+}
+
+section .portfolio {
+  @apply grid grid-cols-3 gap-5;
+}
+
+section .portfolio .card {
+  @apply border p-4 rounded-lg;
+}
+
+section .portfolio .card .image {
+  @apply overflow-hidden;
+}
+
+section .portfolio .card img {
+  @apply transition-all duration-300;
+}
+
+section .portfolio .card:hover img {
+  @apply scale-110;
+}
+
+section .portfolio .card .card-title {
+  @apply text-3xl font-semibold mb-4 mt-3;
+}
+
+footer {
+  @apply h-16 border-t-2 flex items-center justify-center mt-8;
+}

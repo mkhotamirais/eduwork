@@ -1,0 +1,15 @@
+$biru: rgb(50, 100, 200);
+$hijau: rgb(50, 200, 100);
+
+.mySass {
+  color: $biru;
+  border: 1px solid;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  &:hover {
+    background: $hijau;
+    color: white;
+  }
+}
