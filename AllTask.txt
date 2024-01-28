@@ -18,3 +18,4 @@
 18. mongodb: buat fullstack mern mongodb, template client jika butuh https://github.com/eduwork2021/react-express-cruds-template
 19. buat fullstack toko online
 20. buat fe sistem toko
+21. request technical test dan interview test
