@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
         <h3 className="capitalize text-xl font-semibold leading-relaxed text-blue-500 hover:underline">{product.name}</h3>
       </Link>
       <div className="text-2xl text-slate-600 font-semibold flex justify-between items-center">
-        <div>
+        <div className="text-lg md:text-2xl">
           {product.currency}
           {product.price}
         </div>
